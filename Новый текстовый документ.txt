@@ -1,0 +1,99 @@
+1. Что такое Promise
+С Promise более удобнее работать с асенхронным кодом. Например есть один элемент и
+мы хотим что бы он выводился после того как мы кликнем на кнопку, а не загрузился сразу же вместе с страничкой
+Оно имеет 3 состояния pending, fulfilled, rejected
+
+let promise = new Promise((resolve, reject) => {
+        let test = false;
+        if (test) {
+            resolve('Выводи результат');
+        } else {
+            reject('Ошибка');
+        }
+});
+promise.then(
+    result => {alert(result)},
+    error => {alert(error)}
+);
+
+console.log('NOT result');
+
+2. async/await - это механизм, который построенный вокруг и также для Promise
+функция async не яляется генератором, это по сути обычная функция, которая в конечном
+итоге нам должен вернуть какой то результат.
+
+const load = async () => {
+    const a = await Promise.resolve('Geek');
+    const b = await Promise.resolve('Tech');
+    return a + b;
+};
+load().then(value => console.log(value));
+
+
+3.This в JavaScript это ключевое слово, оно имеет особое значение,
+которая зависит от контекста в котором оно применятся.
+Указывает на объект, который выполняет текущий кусок JavaScript-кода.
+Другими словами, – это ссылка на текущий контекст выполнения. У каждой функции есть этот контекст.
+Он указывает, где и как эта функция вызывается.
+В случае с контекстом выполнения не имеет никакого значения, где и когда функция была объявлена. В отличие от замыканий.
+Им как раз очень важно, где была объявлена функция
+
+class Transport {
+    constructor(name,length, weight, color) {
+        this.name = name
+        this.length = length
+        this.weight = weight
+        this.color = color
+    }
+}
+
+class Car extends Transport {
+    constructor(name, length, weight, color, model, engine, speed) {
+        super(name, length, weight, color);
+        this.model = model
+        this.engine = engine
+        this.speed = speed
+    }
+
+    startEngine () {
+        console.log(this.model)
+        console.log(this.engine)
+        console.log(this.speed)
+    }
+
+}
+
+const car = new Car ("BMW", 3.5, "1.8тонн", "darkgrey",
+    "M5 F90", "800 лошадиных сил", "420 км/ч")
+console.log(car)
+car.startEngine()
+
+
+
+4.Замыкание - это комбинация функции, в котором она была уже определена. Замыкание даёт вам доступ к Сфере
+внешней функции из внутренней функции. Замыкание создается всегда при создании функции в js
+
+
+
+5.Стрелочные функции, призваны упростить написание кода и облегчить жизнь JavaScript-программисту.
+Стрелочные функции не имеют имени и с ними можно работать с оператором this.
+Простая функция как сказать она уже более устаревшая но все еще очень функцианальная,
+а стрелочные функции вышли с es6 они более упрощают код
+Для объявления стрелочной функции, вместо слова function пишется блок, состоящий из знака равно и стрелки.
+Стрелочная функция по сути является удобной записью обычной функции, с которой мы привыкли иметь дело.
+
+function show () {
+console.log('Hello')
+}
+Обычная функция
+
+const show = () => {
+console.log('Hello')
+}
+Стрелочная функция
+
+
+
+
+
+
